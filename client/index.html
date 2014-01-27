@@ -1,0 +1,64 @@
+<head>
+    <title>IronRouter</title>
+</head>
+
+<body>
+</body>
+
+<template name="notFound">
+  <h1>Not Found</h1>
+</template>
+
+<template name="loading">
+  <h1>Loading...</h1>
+</template>
+
+<template name="posts">
+  <h1>Posts</h1>
+  <div class="container">
+  {{loginButtons}}
+  </div>
+  <ul>
+    {{#each posts}}
+    <li>{{> postListItem}}</li>
+    {{/each}}
+  </ul>
+  {{#if currentUser}}
+    {{>postForm}}
+  {{/if}}
+</template>
+
+<template name="postListItem">
+    <a href="/posts/{{slug}}">{{title}}</a>
+</template>
+
+<template name="postForm">
+  <div class="col-md-6 postForm">
+  <form role="form">
+    <div class="form-group">
+      <label for="inputTitle">Title</label>
+      <input type="text" class="form-control" id="inputTitle" placeholder="Enter title">
+    </div>
+    <div class="form-group">
+      <label for="inputBody">Body</label>
+      <textarea type="text" rows="3" class="form-control" id="inputBody" placeholder="Body"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default addPost">Submit</button>
+  </form>
+  <div class="alert alert-danger formError hidden">Oops! There was an error. Please try again.</p>
+  </div>
+</template>
+
+<template name="postShow">
+  <h1>{{title}}</h1>
+  <p>
+    {{body}}
+  </p>
+  {{#if currentUser}}
+      <p>hey, you wrote this!</p>
+  {{/if}}
+</template>
+
+<template name="postShowSidebar">
+  <h1>{{title}}</h1>
+</template>
